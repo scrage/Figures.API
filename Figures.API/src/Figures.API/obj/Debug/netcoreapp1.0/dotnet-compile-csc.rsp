@@ -169,4 +169,6 @@
 "C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Startup.cs"
 "C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Controllers\FiguresController.cs"
 "C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureDto.cs"
+"C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureForCreationDto.cs"
+"C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureForUpdateDto.cs"
 "C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\Gender.cs"
