@@ -42,8 +42,17 @@ namespace Figures.API.Controllers
             var figureToCreate = new FigureDto()
             {
                 Id = ++maxFigureId,
-                FullName = newFigure.Name,
-                Gender = newFigure.Gender
+                FigureType = newFigure.FigureType,
+                FirstName = newFigure.FirstName,
+                LastName = newFigure.LastName,
+                MiddleName = newFigure.MiddleName,
+                Gender = newFigure.Gender,
+                UniquelyDisplayedFullName = newFigure.UniquelyDisplayedFullName,
+                IsLastNameFirst = newFigure.IsLastNameFirst,
+                Alias = newFigure.Alias,
+                Description = newFigure.Description,
+                Title = newFigure.Title,
+                CalculatedFullName = FieldProcessor.CalculateFullName(newFigure)
             };
 
             if (!ModelState.IsValid)
@@ -76,8 +85,18 @@ namespace Figures.API.Controllers
                 return NotFound();
             }
 
-            figureFromStore.FullName = updatedFigure.Name;
+            // TODO: remove code duplication.
+            figureFromStore.FigureType = updatedFigure.FigureType;
             figureFromStore.Gender = updatedFigure.Gender;
+            figureFromStore.FirstName = updatedFigure.FirstName;
+            figureFromStore.LastName = updatedFigure.LastName;
+            figureFromStore.MiddleName = updatedFigure.MiddleName;
+            figureFromStore.UniquelyDisplayedFullName = updatedFigure.UniquelyDisplayedFullName;
+            figureFromStore.Title = updatedFigure.Title;
+            figureFromStore.Alias = updatedFigure.Alias;
+            figureFromStore.IsLastNameFirst = updatedFigure.IsLastNameFirst;
+            figureFromStore.Description = updatedFigure.Description;
+            figureFromStore.CalculatedFullName = FieldProcessor.CalculateFullName(updatedFigure);
 
             return NoContent();
         }
@@ -97,10 +116,20 @@ namespace Figures.API.Controllers
                 return NotFound();
             }
 
+            // TODO: remove code duplication.
             var figureToPatch = new FigureForUpdateDto()
             {
-                Name = figureFromStore.FullName,
-                Gender = figureFromStore.Gender
+                FigureType = figureFromStore.FigureType,
+                FirstName = figureFromStore.FirstName,
+                LastName = figureFromStore.LastName,
+                MiddleName = figureFromStore.MiddleName,
+                Gender = figureFromStore.Gender,
+                UniquelyDisplayedFullName = figureFromStore.UniquelyDisplayedFullName,
+                IsLastNameFirst = figureFromStore.IsLastNameFirst,
+                Alias = figureFromStore.Alias,
+                Description = figureFromStore.Description,
+                Title = figureFromStore.Title,
+                CalculatedFullName = FieldProcessor.CalculateFullName(figureFromStore)
             };
 
             patchDoc.ApplyTo(figureToPatch, ModelState);
@@ -112,8 +141,18 @@ namespace Figures.API.Controllers
                 return BadRequest();
             }
 
-            figureFromStore.FullName = figureToPatch.Name;
+            // TODO: remove code duplication.
+            figureFromStore.FigureType = figureToPatch.FigureType;
             figureFromStore.Gender = figureToPatch.Gender;
+            figureFromStore.FirstName = figureToPatch.FirstName;
+            figureFromStore.LastName = figureToPatch.LastName;
+            figureFromStore.MiddleName = figureToPatch.MiddleName;
+            figureFromStore.UniquelyDisplayedFullName = figureToPatch.UniquelyDisplayedFullName;
+            figureFromStore.Title = figureToPatch.Title;
+            figureFromStore.Alias = figureToPatch.Alias;
+            figureFromStore.IsLastNameFirst = figureToPatch.IsLastNameFirst;
+            figureFromStore.Description = figureToPatch.Description;
+            figureFromStore.CalculatedFullName = FieldProcessor.CalculateFullName(figureToPatch);
 
             return NoContent();
         }
