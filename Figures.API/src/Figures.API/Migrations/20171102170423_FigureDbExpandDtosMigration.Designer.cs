@@ -9,9 +9,10 @@ using Figures.API.Models;
 namespace Figures.API.Migrations
 {
     [DbContext(typeof(FigureContext))]
-    partial class FigureContextModelSnapshot : ModelSnapshot
+    [Migration("20171102170423_FigureDbExpandDtosMigration")]
+    partial class FigureDbExpandDtosMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

@@ -187,6 +187,8 @@ C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Entities\Figure.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Entities\FigureContext.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Migrations\20171102150830_FigureDbInitialMigration.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Migrations\20171102150830_FigureDbInitialMigration.Designer.cs
+C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Migrations\20171102170423_FigureDbExpandDtosMigration.cs
+C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Migrations\20171102170423_FigureDbExpandDtosMigration.Designer.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Migrations\FigureContextModelSnapshot.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FieldProcessor.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureDto.cs
