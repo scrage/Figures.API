@@ -17,21 +17,29 @@ namespace Figures.API
                 new FigureDto()
                 {
                     Id = 1,
-                    FullName = "Hanzo Hasashi",
+                    FigureType = FigureType.Fictional,
+                    FirstName = "Hanzo",
+                    LastName = "Hasashi",
                     Gender = Gender.Male
                 },
 
                 new FigureDto()
                 {
                     Id = 2,
-                    FullName = "Bi-Han",
+                    FigureType = FigureType.Fictional,
+                    FirstName = "Bi",
+                    LastName = "Han",
+                    UniquelyDisplayedFullName = "Bi-Han",
                     Gender = Gender.Male
                 },
 
                 new FigureDto()
                 {
                     Id = 3,
-                    FullName = "Pallas Athene",
+                    FigureType = FigureType.Mythological,
+                    FirstName = "Pallas",
+                    LastName = "Athene",
+                    IsLastNameFirst = true,
                     Gender = Gender.Female
                 }
             };

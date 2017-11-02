@@ -7,19 +7,36 @@
         [Required(ErrorMessage = "Id must be set for a new figure!")]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "You should provide a name for the figure.")]
-        [MaxLength(40)]
+        [Required]
+        public FigureType FigureType { get; set; }
+
+        [Required(ErrorMessage = "You should provide at least a First name for the figure.")]
+        [MaxLength(50)]
         public string FirstName { get; set; }
 
-        [MaxLength(40)]
+        [MaxLength(50)]
         public string LastName { get; set; }
 
+        [MaxLength(50)]
+        public string MiddleName { get; set; }
+
+        [MaxLength(152)]
+        public string UniquelyDisplayedFullName { get; set; }
+
+        [MaxLength(25)]
         public string Title { get; set; }
 
-        public string Aka { get; set; }
+        [MaxLength(50)]
+        public string Alias { get; set; }
 
+        [Required]
         public Gender Gender { get; set; }
 
-        public string FullName { get; set; }
+        [Required]
+        public string Description { get; set; }
+
+        public bool IsLastNameFirst { get; set; }
+
+        public string CalculatedFullName { get; set; }
     }
 }
