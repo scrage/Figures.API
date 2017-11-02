@@ -1,17 +1,18 @@
-﻿namespace Figures.API.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Figures.API.Entities
 {
+    using Figures.API.Models;
     using System.ComponentModel.DataAnnotations;
 
-    public class FigureDto
+    public class Figure
     {
-        [Required(ErrorMessage = "Id must be set for a new figure!")]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "You should provide a name for the figure.")]
-        [MaxLength(40)]
         public string FirstName { get; set; }
 
-        [MaxLength(40)]
         public string LastName { get; set; }
 
         public string Title { get; set; }
@@ -20,6 +21,6 @@
 
         public Gender Gender { get; set; }
 
-        public string FullName { get; set; }
+        public string Description { get; set; }
     }
 }

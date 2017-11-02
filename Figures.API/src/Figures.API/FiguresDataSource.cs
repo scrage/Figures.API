@@ -17,21 +17,21 @@ namespace Figures.API
                 new FigureDto()
                 {
                     Id = 1,
-                    Name = "Hanzo Hasashi",
+                    FullName = "Hanzo Hasashi",
                     Gender = Gender.Male
                 },
 
                 new FigureDto()
                 {
                     Id = 2,
-                    Name = "Bi-Han",
+                    FullName = "Bi-Han",
                     Gender = Gender.Male
                 },
 
                 new FigureDto()
                 {
                     Id = 3,
-                    Name = "Pallas Athene",
+                    FullName = "Pallas Athene",
                     Gender = Gender.Female
                 }
             };

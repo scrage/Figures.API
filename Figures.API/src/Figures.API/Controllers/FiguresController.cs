@@ -42,7 +42,7 @@ namespace Figures.API.Controllers
             var figureToCreate = new FigureDto()
             {
                 Id = ++maxFigureId,
-                Name = newFigure.Name,
+                FullName = newFigure.Name,
                 Gender = newFigure.Gender
             };
 
@@ -76,7 +76,7 @@ namespace Figures.API.Controllers
                 return NotFound();
             }
 
-            figureFromStore.Name = updatedFigure.Name;
+            figureFromStore.FullName = updatedFigure.Name;
             figureFromStore.Gender = updatedFigure.Gender;
 
             return NoContent();
@@ -99,7 +99,7 @@ namespace Figures.API.Controllers
 
             var figureToPatch = new FigureForUpdateDto()
             {
-                Name = figureFromStore.Name,
+                Name = figureFromStore.FullName,
                 Gender = figureFromStore.Gender
             };
 
@@ -112,7 +112,7 @@ namespace Figures.API.Controllers
                 return BadRequest();
             }
 
-            figureFromStore.Name = figureToPatch.Name;
+            figureFromStore.FullName = figureToPatch.Name;
             figureFromStore.Gender = figureToPatch.Gender;
 
             return NoContent();
