@@ -63,9 +63,11 @@
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.EntityFrameworkCore.SqlServer\1.0.1\lib\netstandard1.3\Microsoft.EntityFrameworkCore.SqlServer.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Caching.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Caching.Abstractions.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Caching.Memory\1.1.0\lib\netstandard1.3\Microsoft.Extensions.Caching.Memory.dll
---reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Configuration\1.0.0\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll
+--reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Configuration\1.1.0-preview1-final\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Configuration.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Configuration.EnvironmentVariables\1.0.0\lib\netstandard1.3\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+--reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Configuration.FileExtensions\1.0.0\lib\netstandard1.3\Microsoft.Extensions.Configuration.FileExtensions.dll
+--reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.Configuration.Json\1.1.0-preview1-final\lib\netstandard1.3\Microsoft.Extensions.Configuration.Json.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.DependencyInjection\1.1.0\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.DependencyInjection.Abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\Microsoft.Extensions.DependencyModel\1.0.0\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll
@@ -153,7 +155,7 @@
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Runtime.InteropServices.RuntimeInformation\4.3.0\ref\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Runtime.Loader\4.0.0\ref\netstandard1.5\System.Runtime.Loader.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Runtime.Numerics\4.3.0\ref\netstandard1.1\System.Runtime.Numerics.dll
---reference:C:\Users\istvan.fazekas\.nuget\packages\System.Runtime.Serialization.Primitives\4.1.1\ref\netstandard1.3\System.Runtime.Serialization.Primitives.dll
+--reference:C:\Users\istvan.fazekas\.nuget\packages\System.Runtime.Serialization.Primitives\4.3.0-preview1-24530-04\ref\netstandard1.3\System.Runtime.Serialization.Primitives.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Runtime.Serialization.Xml\4.1.1\ref\netstandard1.3\System.Runtime.Serialization.Xml.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Security.Claims\4.3.0\ref\netstandard1.3\System.Security.Claims.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Security.Cryptography.Algorithms\4.3.0\ref\netstandard1.6\System.Security.Cryptography.Algorithms.dll
