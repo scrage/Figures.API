@@ -31,7 +31,6 @@ namespace Figures.API.Controllers
         {
             try
             {
-                throw new Exception("deliberate exception");
                 var figureToReturn = FiguresDataStore.Current.Figures.FirstOrDefault(f => f.Id == id);
 
                 if (figureToReturn == null)
