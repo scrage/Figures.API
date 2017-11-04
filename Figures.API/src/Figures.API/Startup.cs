@@ -8,6 +8,7 @@
     using Figures.API.Entities;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
+    using NLog.Extensions.Logging;
 
     public class Startup
     {
@@ -38,6 +39,7 @@
         {
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
+            loggerFactory.AddNLog();
 
             if (env.IsDevelopment())
             {

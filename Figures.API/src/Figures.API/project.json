@@ -12,9 +12,10 @@
     "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
     "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
-    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
-    "Microsoft.Extensions.Configuration.Json": "1.1.0-preview1-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0"},
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.1.0-preview1-final",
+    "Microsoft.Extensions.Configuration.Json": "1.0.1",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0",
+    "NLog.Extensions.Logging": "1.0.0-rtm-rc2"},
 
   "tools": {
     "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
