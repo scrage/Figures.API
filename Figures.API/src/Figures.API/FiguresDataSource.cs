@@ -20,7 +20,8 @@ namespace Figures.API
                     FigureType = FigureType.Fictional,
                     FirstName = "Hanzo",
                     LastName = "Hasashi",
-                    Gender = Gender.Male
+                    Gender = Gender.Male,
+                    Alias = "Scorpion"
                 },
 
                 new FigureDto()
@@ -30,15 +31,16 @@ namespace Figures.API
                     FirstName = "Bi",
                     LastName = "Han",
                     UniquelyDisplayedFullName = "Bi-Han",
-                    Gender = Gender.Male
+                    Gender = Gender.Male,
+                    Alias = "Sub-Zero"
                 },
 
                 new FigureDto()
                 {
                     Id = 3,
                     FigureType = FigureType.Mythological,
-                    FirstName = "Pallas",
-                    LastName = "Athene",
+                    FirstName = "Athene",
+                    LastName = "Pallas",
                     IsLastNameFirst = true,
                     Gender = Gender.Female
                 }

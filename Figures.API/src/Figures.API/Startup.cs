@@ -19,16 +19,17 @@
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appSettings.json", optional:false, reloadOnChange:true)
-                .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional:true, reloadOnChange:true);
+                .AddJsonFile($"appSettings.{env.EnvironmentName}.json", optional:true, reloadOnChange:true)
+                .AddEnvironmentVariables();
 
-            builder.Build();
+            Configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionstring = @"Server=(localdb)\mssqllocaldb;Database=FigureDB;Trusted_Connection=True;";
+            var connectionstring = Startup.Configuration["connectionStrings:figuresDbConnectionString"];
 
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
             services.AddDbContext<FigureContext>(o => o.UseSqlServer(connectionstring));
