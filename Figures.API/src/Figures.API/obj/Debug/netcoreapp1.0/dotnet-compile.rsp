@@ -187,6 +187,7 @@
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Xml.XmlDocument\4.3.0\ref\netstandard1.3\System.Xml.XmlDocument.dll
 --reference:C:\Users\istvan.fazekas\.nuget\packages\System.Xml.XmlSerializer\4.3.0\ref\netstandard1.3\System.Xml.XmlSerializer.dll
 --resource:"C:\Projects\FiguresAPI\Figures.API\src\Figures.API\obj\Debug\netcoreapp1.0\Figures.APIdotnet-compile.deps.json",Figures.API.deps.json
+C:\Projects\FiguresAPI\Figures.API\src\Figures.API\FigureContextExtensions.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\FiguresDataSource.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Program.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Startup.cs
