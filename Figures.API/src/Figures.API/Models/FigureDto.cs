@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class FigureDto
+    public class FigureDto : IFigureDto
     {
         [Required(ErrorMessage = "Id must be set for a new figure!")]
         public int Id { get; set; }

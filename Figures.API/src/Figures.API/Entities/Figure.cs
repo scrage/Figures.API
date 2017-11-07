@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Figures.API.Entities
+﻿namespace Figures.API.Entities
 {
     using Figures.API.Models;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Figure
+    public class Figure : IFigureDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -29,9 +28,6 @@ namespace Figures.API.Entities
 
         [MaxLength(50)]
         public string MiddleName { get; set; }
-
-        [MaxLength(152)]
-        public string FullName { get; set; }
 
         [MaxLength(152)]
         public string UniquelyDisplayedFullName { get; set; }

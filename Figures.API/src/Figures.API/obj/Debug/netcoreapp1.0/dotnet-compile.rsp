@@ -208,5 +208,6 @@ C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureForCreationDto.c
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureForUpdateDto.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\FigureType.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\Gender.cs
+C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Models\IFigureDto.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Services\FigureRepository.cs
 C:\Projects\FiguresAPI\Figures.API\src\Figures.API\Services\IFigureRepository.cs

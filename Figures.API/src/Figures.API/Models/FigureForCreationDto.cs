@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class FigureForCreationDto
+    public class FigureForCreationDto : IFigureDto
     {
         [Required]
         public FigureType FigureType { get; set; }
