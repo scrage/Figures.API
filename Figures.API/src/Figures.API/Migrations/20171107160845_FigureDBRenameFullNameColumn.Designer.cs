@@ -9,9 +9,10 @@ using Figures.API.Models;
 namespace Figures.API.Migrations
 {
     [DbContext(typeof(FigureContext))]
-    partial class FigureContextModelSnapshot : ModelSnapshot
+    [Migration("20171107160845_FigureDBRenameFullNameColumn")]
+    partial class FigureDBRenameFullNameColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

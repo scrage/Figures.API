@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Figures.API.Services;
 
 namespace Figures.API.Controllers
 {
@@ -14,16 +15,41 @@ namespace Figures.API.Controllers
     public class FiguresController : Controller
     {
         private ILogger<FiguresController> _logger;
+        private IFigureRepository _figureRepository;
 
-        public FiguresController(ILogger<FiguresController> logger)
+        public FiguresController(ILogger<FiguresController> logger, IFigureRepository figureRepository)
         {
             _logger = logger;
+            _figureRepository = figureRepository;
         }
 
         [HttpGet()]
         public IActionResult GetFigures()
         {
-            return Ok(FiguresDataStore.Current.Figures);
+            var figureEntities = _figureRepository.GetFigures();
+            var result = new List<FigureDto>();
+
+            // Map entity to DTO.
+            foreach (var figureEntity in figureEntities)
+            {
+                result.Add(new FigureDto()
+                {
+                    Id = figureEntity.Id,
+                    FigureType = figureEntity.FigureType,
+                    Alias = figureEntity.Alias,
+                    FirstName = figureEntity.FirstName,
+                    LastName = figureEntity.LastName,
+                    Gender = figureEntity.Gender,
+                    Description = figureEntity.Description,
+                    IsLastNameFirst = figureEntity.IsLastNameFirst,
+                    UniquelyDisplayedFullName = figureEntity.UniquelyDisplayedFullName,
+                    Title = figureEntity.Title,
+                    MiddleName = figureEntity.MiddleName,
+                    FullName = FieldProcessor.CalculateFullName(figureEntity)
+                });
+            }
+
+            return Ok(result);
         }
 
         [HttpGet("{id}", Name = "GetFigure")]
@@ -74,7 +100,7 @@ namespace Figures.API.Controllers
                     Alias = newFigure.Alias,
                     Description = newFigure.Description,
                     Title = newFigure.Title,
-                    CalculatedFullName = FieldProcessor.CalculateFullName(newFigure)
+                    FullName = FieldProcessor.CalculateFullName(newFigure)
                 };
 
                 TryValidateModel(figureToCreate);
@@ -131,7 +157,7 @@ namespace Figures.API.Controllers
                 figureFromStore.Alias = updatedFigure.Alias;
                 figureFromStore.IsLastNameFirst = updatedFigure.IsLastNameFirst;
                 figureFromStore.Description = updatedFigure.Description;
-                figureFromStore.CalculatedFullName = FieldProcessor.CalculateFullName(updatedFigure);
+                figureFromStore.FullName = FieldProcessor.CalculateFullName(updatedFigure);
 
                 return NoContent();
             }
@@ -174,7 +200,7 @@ namespace Figures.API.Controllers
                     Alias = figureFromStore.Alias,
                     Description = figureFromStore.Description,
                     Title = figureFromStore.Title,
-                    CalculatedFullName = FieldProcessor.CalculateFullName(figureFromStore)
+                    FullName = FieldProcessor.CalculateFullName(figureFromStore)
                 };
 
                 patchDoc.ApplyTo(figureToPatch, ModelState);
@@ -198,7 +224,7 @@ namespace Figures.API.Controllers
                 figureFromStore.Alias = figureToPatch.Alias;
                 figureFromStore.IsLastNameFirst = figureToPatch.IsLastNameFirst;
                 figureFromStore.Description = figureToPatch.Description;
-                figureFromStore.CalculatedFullName = FieldProcessor.CalculateFullName(figureToPatch);
+                figureFromStore.FullName = FieldProcessor.CalculateFullName(figureToPatch);
 
                 return NoContent();
             }

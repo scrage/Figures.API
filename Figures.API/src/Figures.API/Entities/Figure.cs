@@ -18,11 +18,20 @@ namespace Figures.API.Entities
         [MaxLength(50)]
         public string FirstName { get; set; }
 
+        [Required]
+        public Gender Gender { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
         [MaxLength(50)]
         public string LastName { get; set; }
 
         [MaxLength(50)]
         public string MiddleName { get; set; }
+
+        [MaxLength(152)]
+        public string FullName { get; set; }
 
         [MaxLength(152)]
         public string UniquelyDisplayedFullName { get; set; }
@@ -32,12 +41,6 @@ namespace Figures.API.Entities
 
         [MaxLength(50)]
         public string Alias { get; set; }
-
-        [Required]
-        public Gender Gender { get; set; }
-
-        [Required]
-        public string Description { get; set; }
 
         public bool IsLastNameFirst { get; set; }
     }

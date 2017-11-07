@@ -1,4 +1,6 @@
-﻿namespace Figures.API
+﻿using Figures.API.Services;
+
+namespace Figures.API
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -33,6 +35,7 @@
 
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
             services.AddDbContext<FigureContext>(o => o.UseSqlServer(connectionstring));
+            services.AddScoped<IFigureRepository, FigureRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

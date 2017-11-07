@@ -34,6 +34,6 @@
 
         public bool IsLastNameFirst { get; set; }
 
-        public string CalculatedFullName { get; set; }
+        public string FullName { get; set; }
     }
 }
