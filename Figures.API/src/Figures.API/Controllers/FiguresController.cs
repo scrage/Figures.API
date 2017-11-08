@@ -27,27 +27,7 @@ namespace Figures.API.Controllers
         public IActionResult GetFigures()
         {
             var figureEntities = _figureRepository.GetFigures();
-            var result = new List<FigureDto>();
-
-            // Map entity to DTO.
-            foreach (var figureEntity in figureEntities)
-            {
-                result.Add(new FigureDto()
-                {
-                    Id = figureEntity.Id,
-                    FigureType = figureEntity.FigureType,
-                    Alias = figureEntity.Alias,
-                    FirstName = figureEntity.FirstName,
-                    LastName = figureEntity.LastName,
-                    Gender = figureEntity.Gender,
-                    Description = figureEntity.Description,
-                    IsLastNameFirst = figureEntity.IsLastNameFirst,
-                    UniquelyDisplayedFullName = figureEntity.UniquelyDisplayedFullName,
-                    Title = figureEntity.Title,
-                    MiddleName = figureEntity.MiddleName,
-                    FullName = FieldProcessor.CalculateFullName(figureEntity)
-                });
-            }
+            var result = AutoMapper.Mapper.Map<IEnumerable<FigureDto>>(figureEntities);
 
             return Ok(result);
         }
@@ -57,7 +37,7 @@ namespace Figures.API.Controllers
         {
             try
             {
-                var figureToReturn = FiguresDataStore.Current.Figures.FirstOrDefault(f => f.Id == id);
+                var figureToReturn = _figureRepository.GetFigure(id);
 
                 if (figureToReturn == null)
                 {
@@ -65,7 +45,9 @@ namespace Figures.API.Controllers
                     return NotFound();
                 }
 
-                return Ok(figureToReturn);
+                var result = AutoMapper.Mapper.Map<FigureDto>(figureToReturn);
+
+                return Ok(result);
             }
             catch (Exception e)
             {

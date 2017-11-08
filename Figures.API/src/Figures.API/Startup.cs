@@ -53,6 +53,12 @@ namespace Figures.API
             figureContext.EnsureSeedDataForContext();
 
             app.UseStatusCodePages();
+
+            AutoMapper.Mapper.Initialize(config =>
+            {
+                config.CreateMap<Entities.Figure, Models.FigureDto>();
+            });
+
             app.UseMvc();
         }
     }
