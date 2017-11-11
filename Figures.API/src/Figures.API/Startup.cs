@@ -57,6 +57,7 @@ namespace Figures.API
             AutoMapper.Mapper.Initialize(config =>
             {
                 config.CreateMap<Entities.Figure, Models.FigureDto>();
+                config.CreateMap<Models.FigureForCreationDto, Entities.Figure>();
             });
 
             app.UseMvc();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Figures.API.Services;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Figures.API.Controllers
 {
@@ -16,6 +17,7 @@ namespace Figures.API.Controllers
     {
         private ILogger<FiguresController> _logger;
         private IFigureRepository _figureRepository;
+        private const string StatusCode500Message = "A problem has happened while handling your request.";
 
         public FiguresController(ILogger<FiguresController> logger, IFigureRepository figureRepository)
         {
@@ -52,7 +54,7 @@ namespace Figures.API.Controllers
             catch (Exception e)
             {
                 _logger.LogCritical($"Exception occurred while getting figure with id {id}", e);
-                return StatusCode(500, "A problem has happened while handling your request.");
+                return StatusCode(500, StatusCode500Message);
             }
         }
 
@@ -67,25 +69,10 @@ namespace Figures.API.Controllers
                     return BadRequest();
                 }
 
-                var maxFigureId = FiguresDataStore.Current.Figures.Max(f => f.Id);
+                var mappedNewFigure = AutoMapper.Mapper.Map<Entities.Figure>(newFigure);
+                _figureRepository.AddFigure(mappedNewFigure);
 
-                var figureToCreate = new FigureDto()
-                {
-                    Id = ++maxFigureId,
-                    FigureType = newFigure.FigureType,
-                    FirstName = newFigure.FirstName,
-                    LastName = newFigure.LastName,
-                    MiddleName = newFigure.MiddleName,
-                    Gender = newFigure.Gender,
-                    UniquelyDisplayedFullName = newFigure.UniquelyDisplayedFullName,
-                    IsLastNameFirst = newFigure.IsLastNameFirst,
-                    Alias = newFigure.Alias,
-                    Description = newFigure.Description,
-                    Title = newFigure.Title,
-                    FullName = FieldProcessor.CalculateFullName(newFigure)
-                };
-
-                TryValidateModel(figureToCreate);
+                TryValidateModel(mappedNewFigure);
 
                 if (!ModelState.IsValid)
                 {
@@ -93,13 +80,20 @@ namespace Figures.API.Controllers
                     return BadRequest();
                 }
 
-                FiguresDataStore.Current.Figures.Add(figureToCreate);
-                return CreatedAtRoute("GetFigure", figureToCreate.Id, figureToCreate);
+                if (!_figureRepository.Save())
+                {
+                    return StatusCode(500, StatusCode500Message);
+                }
+
+                return CreatedAtRoute(
+                    routeName: "GetFigure",
+                    routeValues: new { id = mappedNewFigure.Id },
+                    value: mappedNewFigure);
             }
             catch (Exception e)
             {
                 _logger.LogCritical("Exception occurred while inserting new figure.", e);
-                return StatusCode(500, "A problem has happened while handling your request.");
+                return StatusCode(500, StatusCode500Message);
             }
         }
 
@@ -146,7 +140,7 @@ namespace Figures.API.Controllers
             catch (Exception e)
             {
                 _logger.LogCritical("Exception occurred while updating a figure.", e);
-                return StatusCode(500, "A problem has happened while handling your request.");
+                return StatusCode(500, StatusCode500Message);
             }
         }
 
@@ -213,7 +207,7 @@ namespace Figures.API.Controllers
             catch (Exception e)
             {
                 _logger.LogCritical("Exception occurred while patching a figure.", e);
-                return StatusCode(500, "A problem has happened while handling your request.");
+                return StatusCode(500, StatusCode500Message);
             }
         }
 
@@ -237,7 +231,7 @@ namespace Figures.API.Controllers
             catch (Exception e)
             {
                 _logger.LogCritical("Exception occurred while deleting a figure.", e);
-                return StatusCode(500, "A problem has happened while handling your request.");
+                return StatusCode(500, StatusCode500Message);
             }
         }
     }

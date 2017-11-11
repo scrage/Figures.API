@@ -9,5 +9,9 @@
         IEnumerable<Figure> GetFigures();
 
         Figure GetFigure(int id);
+
+        void AddFigure(Figure newFigure);
+
+        bool Save();
     }
 }
