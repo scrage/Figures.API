@@ -58,6 +58,7 @@ namespace Figures.API
             {
                 config.CreateMap<Entities.Figure, Models.FigureDto>();
                 config.CreateMap<Models.FigureForCreationDto, Entities.Figure>();
+                config.CreateMap<Models.FigureForUpdateDto, Entities.Figure>();
             });
 
             app.UseMvc();

@@ -19,6 +19,11 @@
             _context.Figures.Add(newFigure);
         }
 
+        public bool DoesFigureExist(int id)
+        {
+            return _context.Figures.Any(f => f.Id == id);
+        }
+
         public Figure GetFigure(int id)
         {
             return _context.Figures.FirstOrDefault(f => f.Id == id);

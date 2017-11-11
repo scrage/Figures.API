@@ -10,6 +10,8 @@
 
         Figure GetFigure(int id);
 
+        bool DoesFigureExist(int id);
+
         void AddFigure(Figure newFigure);
 
         bool Save();

@@ -39,16 +39,14 @@ namespace Figures.API.Controllers
         {
             try
             {
-                var figureToReturn = _figureRepository.GetFigure(id);
 
-                if (figureToReturn == null)
+                if (!_figureRepository.DoesFigureExist(id))
                 {
                     _logger.LogInformation($"Figure with id {id} wasn't found.");
                     return NotFound();
                 }
 
-                var result = AutoMapper.Mapper.Map<FigureDto>(figureToReturn);
-
+                var result = AutoMapper.Mapper.Map<FigureDto>(_figureRepository.GetFigure(id));
                 return Ok(result);
             }
             catch (Exception e)
@@ -114,26 +112,19 @@ namespace Figures.API.Controllers
                     return BadRequest();
                 }
 
-                var figureFromStore = FiguresDataStore.Current.Figures.FirstOrDefault(f => f.Id == id);
-
-                if (figureFromStore == null)
+                if (!_figureRepository.DoesFigureExist(id))
                 {
                     _logger.LogInformation($"Figure to update with id {id} wasn't found.");
                     return NotFound();
                 }
 
-                // TODO: remove code duplication.
-                figureFromStore.FigureType = updatedFigure.FigureType;
-                figureFromStore.Gender = updatedFigure.Gender;
-                figureFromStore.FirstName = updatedFigure.FirstName;
-                figureFromStore.LastName = updatedFigure.LastName;
-                figureFromStore.MiddleName = updatedFigure.MiddleName;
-                figureFromStore.UniquelyDisplayedFullName = updatedFigure.UniquelyDisplayedFullName;
-                figureFromStore.Title = updatedFigure.Title;
-                figureFromStore.Alias = updatedFigure.Alias;
-                figureFromStore.IsLastNameFirst = updatedFigure.IsLastNameFirst;
-                figureFromStore.Description = updatedFigure.Description;
-                figureFromStore.FullName = FieldProcessor.CalculateFullName(updatedFigure);
+                var figureEntity = _figureRepository.GetFigure(id);
+                AutoMapper.Mapper.Map(updatedFigure, figureEntity);
+
+                if (!_figureRepository.Save())
+                {
+                    return StatusCode(500, StatusCode500Message);
+                }
 
                 return NoContent();
             }
