@@ -146,52 +146,30 @@ namespace Figures.API.Controllers
                     return BadRequest();
                 }
 
-                var figureFromStore = FiguresDataStore.Current.Figures.FirstOrDefault(f => f.Id == id);
-
-                if (figureFromStore == null)
+                if (!_figureRepository.DoesFigureExist(id))
                 {
                     _logger.LogInformation($"Figure to patch with id {id} wasn't found.");
                     return NotFound();
                 }
 
-                // TODO: remove code duplication.
-                var figureToPatch = new FigureForUpdateDto()
-                {
-                    FigureType = figureFromStore.FigureType,
-                    FirstName = figureFromStore.FirstName,
-                    LastName = figureFromStore.LastName,
-                    MiddleName = figureFromStore.MiddleName,
-                    Gender = figureFromStore.Gender,
-                    UniquelyDisplayedFullName = figureFromStore.UniquelyDisplayedFullName,
-                    IsLastNameFirst = figureFromStore.IsLastNameFirst,
-                    Alias = figureFromStore.Alias,
-                    Description = figureFromStore.Description,
-                    Title = figureFromStore.Title,
-                    FullName = FieldProcessor.CalculateFullName(figureFromStore)
-                };
+                var figureEntity = _figureRepository.GetFigure(id);
+                var figureToPatch = AutoMapper.Mapper.Map<FigureForUpdateDto>(figureEntity);
 
                 patchDoc.ApplyTo(figureToPatch, ModelState);
 
                 TryValidateModel(figureToPatch);
-
                 if (!ModelState.IsValid)
                 {
                     _logger.LogInformation($"Figure to patch is invalid: {ModelState.ValidationState}");
                     return BadRequest();
                 }
 
-                // TODO: remove code duplication.
-                figureFromStore.FigureType = figureToPatch.FigureType;
-                figureFromStore.Gender = figureToPatch.Gender;
-                figureFromStore.FirstName = figureToPatch.FirstName;
-                figureFromStore.LastName = figureToPatch.LastName;
-                figureFromStore.MiddleName = figureToPatch.MiddleName;
-                figureFromStore.UniquelyDisplayedFullName = figureToPatch.UniquelyDisplayedFullName;
-                figureFromStore.Title = figureToPatch.Title;
-                figureFromStore.Alias = figureToPatch.Alias;
-                figureFromStore.IsLastNameFirst = figureToPatch.IsLastNameFirst;
-                figureFromStore.Description = figureToPatch.Description;
-                figureFromStore.FullName = FieldProcessor.CalculateFullName(figureToPatch);
+                AutoMapper.Mapper.Map(figureToPatch, figureEntity);
+
+                if (!_figureRepository.Save())
+                {
+                    return StatusCode(500, StatusCode500Message);
+                }
 
                 return NoContent();
             }
