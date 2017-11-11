@@ -19,6 +19,11 @@
             _context.Figures.Add(newFigure);
         }
 
+        public void DeleteFigure(Figure figureToDelete)
+        {
+            _context.Figures.Remove(figureToDelete);
+        }
+
         public bool DoesFigureExist(int id)
         {
             return _context.Figures.Any(f => f.Id == id);

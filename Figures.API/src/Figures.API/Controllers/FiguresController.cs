@@ -185,15 +185,19 @@ namespace Figures.API.Controllers
         {
             try
             {
-                var figureFromStore = FiguresDataStore.Current.Figures.FirstOrDefault(f => f.Id == id);
-
-                if (figureFromStore == null)
+                if (!_figureRepository.DoesFigureExist(id))
                 {
                     _logger.LogInformation($"Figure to delete with id {id} wasn't found.");
                     return NotFound();
                 }
 
-                FiguresDataStore.Current.Figures.Remove(figureFromStore);
+                var figureToDelete = _figureRepository.GetFigure(id);
+                _figureRepository.DeleteFigure(figureToDelete);
+
+                if (!_figureRepository.Save())
+                {
+                    return StatusCode(500, StatusCode500Message);
+                }
 
                 return NoContent();
             }

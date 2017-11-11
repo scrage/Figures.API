@@ -14,6 +14,8 @@
 
         void AddFigure(Figure newFigure);
 
+        void DeleteFigure(Figure figureToDelete);
+
         bool Save();
     }
 }
